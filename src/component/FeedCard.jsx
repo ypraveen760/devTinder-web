@@ -1,7 +1,13 @@
+import axios from "axios";
 import React from "react";
+import { BASE_URL } from "../utils/constans";
+import { useDispatch } from "react-redux";
+import { removeFeed } from "../utils/feedSlice";
 
 const FeedCard = ({ user }) => {
+  const dispatch = useDispatch();
   const {
+    _id,
     firstName,
     lastName,
     age,
@@ -10,7 +16,18 @@ const FeedCard = ({ user }) => {
     photo: photoUrl,
     about,
   } = user;
-
+  const handleFeed = async (status, user_id) => {
+    try {
+      const res = await axios.post(
+        BASE_URL + "/request/sent/" + status + "/" + user_id,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeFeed(_id));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
   return (
     <div className="flex justify-center   -z-20 ">
       <div className="card bg-base-200 w-96 shadow-xl ">
@@ -46,8 +63,18 @@ const FeedCard = ({ user }) => {
             <h3 className="font-semibold">No Skills Listed</h3>
           )}
           <div className="card-actions justify-evenly mt-4">
-            <button className="btn btn-error">Ignore</button>
-            <button className="btn btn-success">Intrested</button>
+            <button
+              className="btn btn-error"
+              onClick={() => handleFeed("ignored", _id)}
+            >
+              Ignore
+            </button>
+            <button
+              className="btn btn-success"
+              onClick={() => handleFeed("intrested", _id)}
+            >
+              Intrested
+            </button>
           </div>
         </div>
       </div>

@@ -9,8 +9,6 @@ const ConnectionRequests = () => {
   const dispatch = useDispatch();
   const handleRequest = async (status, _id) => {
     try {
-      console.log(status, _id);
-
       const res = axios.post(
         BASE_URL + "/request/review/" + status + "/" + _id,
         {},
@@ -57,9 +55,7 @@ const ConnectionRequests = () => {
             <div className="w-full lg:w-6/12    items-center  flex   bg-base-200">
               <img className="h-24 w-24 m-3 rounded-full" src={photo} />
               <div className=" p-6">
-                <h1 className="text-xl font-medium">
-                  {firstName + " " + lastName}
-                </h1>
+                <h1 className=" font-medium">{firstName + " " + lastName}</h1>
                 {age && gender && (
                   <h3 className="text-xl font-medium">{age + " " + gender}</h3>
                 )}

@@ -24,8 +24,21 @@ const Feed = () => {
     fetchFeed();
   }, []);
 
-  if (!feedData || feedData === 0) {
-    return <div>Loading...</div>;
+  if (!feedData) {
+    return (
+      <div className="flex justify-center mt-24 font-bold text-2xl">
+        Loading...
+      </div>
+    );
+  }
+  if (feedData <= 0) {
+    return (
+      <div>
+        <h1 className="flex justify-center mt-24 font-bold text-2xl">
+          No New User Found
+        </h1>
+      </div>
+    );
   }
   return (
     <div className="mt-28">

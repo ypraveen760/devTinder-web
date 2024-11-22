@@ -42,15 +42,13 @@ const Connections = () => {
             <div className="w-full lg:w-6/12   items-center  flex  bg-base-200">
               <img className="h-24 w-24 m-3 rounded-full" src={photo} />
               <div className=" p-6">
-                <h1 className="text-xl font-medium">
-                  {firstName + " " + lastName}
-                </h1>
+                <h1 className=" font-medium">{firstName + " " + lastName}</h1>
                 {age && gender && (
-                  <h3 className="text-xl font-medium">{age + " " + gender}</h3>
+                  <h3 className=" font-medium">{age + " " + gender}</h3>
                 )}
                 {about && (
                   <p className="whitespace-normal break-words">
-                    <span className="text-xl font-medium">About:</span>
+                    <span className=" font-medium">About:</span>
                     {about}
                   </p>
                 )}
