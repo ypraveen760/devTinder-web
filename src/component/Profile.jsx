@@ -4,8 +4,6 @@ import EditProfile from "./EditProfile";
 
 const Profile = () => {
   const user = useSelector((store) => store.user);
-  console.log(user);
-
   if (!user) {
     return <div>Loading..</div>;
   }

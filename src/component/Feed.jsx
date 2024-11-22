@@ -8,8 +8,6 @@ import FeedCard from "./FeedCard";
 const Feed = () => {
   const dispatch = useDispatch();
   const feedData = useSelector((store) => store.feed);
-  console.log(feedData);
-
   const fetchFeed = async () => {
     try {
       if (!feedData || feedData === 0) {
